@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import LoadingBar from "./LoadingBar"
 import SettingsIcon from "@material-ui/icons/Settings"
 import DeleteIcon from '@material-ui/icons/Delete';
-import ShareIcon from '@material-ui/icons/Share';
 import { auth, firestore, storage } from "../firebase";
 
 const useStyles = makeStyles({
