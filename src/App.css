@@ -1,38 +1,117 @@
-.App {
-  text-align: center;
+* {
+  margin: 0%;
+  padding: 0%;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: sans-serif;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body::-webkit-scrollbar {
+  display: none;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.center {
+  height: 80vh;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.btn-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.list-item-text {
+  display: flex;
+  flex-direction: column;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.main-container {
+  display: flex;
+  flex-direction: row;
+  overflow: hidden;
+}
+
+.message-container {
+  height: 90.6vh;
+  flex: 0.7;
+  display: flex;
+  flex-direction: column;
+}
+
+.message-container > div::-webkit-scrollbar {
+  display: none;
+}
+
+.room-list::-webkit-scrollbar {
+  display: none;
+}
+
+.message-list {
+  flex: 0.9;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+
+.message-list::-webkit-scrollbar {
+  display: none;
+}
+
+.my-message {
+  align-self: flex-end;
+  background-color: #6f42c1;
+  color: rgb(240, 240, 240);
+  padding: 7px;
+  border-radius: 3px;
+  margin: 3px 0px;
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.other-message {
+  align-self: flex-start;
+  background-color: rgb(50, 50, 50);
+  color: rgb(240, 240, 240);
+  padding: 7px;
+  margin: 3px 0px;
+  border-radius: 3px;
+}
+
+.allowed-users-list {
+  max-height: 150; 
+  overflow-y: "scroll";
+}
+
+.allowed-users-list::-webkit-scrollbar {
+  display: none;
+}
+
+.message-photo {
+  transition: 0.15s;
+}
+
+@media screen and (max-width: 521px) {
+  .message-photo {
+    width: 125px;
+    height: 125px;
   }
-  to {
-    transform: rotate(360deg);
+}
+
+@media screen and (max-width: 385px) {
+  .message-photo {
+    width: 75px;
+    height: 75px;
   }
 }
