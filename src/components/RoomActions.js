@@ -34,6 +34,7 @@ const RoomActions = ({ isNewRoom, searchRoom }) => {
   }
 
   const createRoom = async () => {
+    console.log(isNewRoom(roomName))
     if (!isNewRoom(roomName)) {
       alert("A room with that name already exists.")
     } else {
@@ -43,8 +44,8 @@ const RoomActions = ({ isNewRoom, searchRoom }) => {
           admin: auth.currentUser.email,
           allowedUsers: [auth.currentUser.email]
         })
-      } catch({ message }) {
-        alert(message)
+      } catch(e) {
+        alert("A  with that name already exists.")
       }
     }
 

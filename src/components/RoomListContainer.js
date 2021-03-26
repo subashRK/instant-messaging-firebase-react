@@ -21,16 +21,9 @@ const RoomListContainer = ({ rooms: chatRooms, getMessages }) => {
   }, [chatRooms])
 
   const isNewRoom = name => {
-    let result = true
+    const availableRoom = chatRooms.find(item => item.id === name)
 
-    for (let room in rooms) {
-      if (room.id === name) {
-        result = false
-        break
-      }
-    }
-
-    return result
+    return availableRoom ? false : true
   }
 
   const searchRoom = (name) => {
