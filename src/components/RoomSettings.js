@@ -1,5 +1,6 @@
 import { Button, Card, makeStyles, TextField, Typography } from "@material-ui/core"
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router"
 import { arrayRemove, arrayUnion, auth, firestore } from "../firebase"
 
 const useStyles = makeStyles({
@@ -16,12 +17,14 @@ const useStyles = makeStyles({
   }
 })
 
-const RoomSettings = ({ rooms, roomName }) => {
+const RoomSettings = ({ rooms, roomName, setMessages }) => {
   const [room, setRoom] = useState(null)
   const [admin, setAdmin] = useState(false)
   const [newUser, setNewUser] = useState("")
 
   const classes = useStyles()
+
+  const history = useHistory()
 
   useEffect(() => {
     const res = rooms.find(item => item.id === roomName)
@@ -65,6 +68,24 @@ const RoomSettings = ({ rooms, roomName }) => {
     }
   }
 
+  const deleteRoom = async () => {
+    const res = window.confirm("Are you sure about deleting this room?")
+
+    if (!res) return
+
+    if (room.admin === auth.currentUser.email) {
+      try {
+        await firestore.collection(`rooms`).doc(room.name).delete()
+        setMessages(null)
+        history.replace("/")
+      } catch(e) {
+        alert("You cannot delete this room!")
+      }
+    } else {
+      alert("You cannot delete this room!")
+    }
+  }
+
   return (
     <div className="center">
       {
@@ -97,6 +118,14 @@ const RoomSettings = ({ rooms, roomName }) => {
                       onClick={removeAllowedUser}
                     >
                       Remove User
+                    </Button>
+                    <Button
+                      className={classes.submitButton}
+                      variant="contained"
+                      disableElevation
+                      onClick={deleteRoom}
+                    >
+                      Delete Room
                     </Button>
                   </form>
                 </>

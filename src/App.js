@@ -110,7 +110,7 @@ function App() {
                 {
                   messages && (
                     <Route path="/room/settings" exact>
-                      <RoomSettings rooms={rooms} roomName={messages.name} />
+                      <RoomSettings rooms={rooms} roomName={messages.name} setMessages={setMessages} />
                     </Route>
                   )
                 }
